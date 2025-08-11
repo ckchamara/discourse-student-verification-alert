@@ -1,6 +1,6 @@
 # name: discourse-student-verification-alert
-# about: Shows an information alert above the navbar for unverified student users
-# version: 1.0.0
+# about: Shows an information alert above the navbar for logged-in users, with configurable group targeting
+# version: 2.0.0
 # authors: Discourse Plugin Developer
 # url: https://github.com/yourusername/discourse-student-verification-alert
 # required_version: 2.7.0

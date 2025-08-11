@@ -1,11 +1,12 @@
 # Discourse Student Verification Alert Plugin
 
-A Discourse plugin that displays an information alert banner above the navbar for users who need to verify their student status.
+A Discourse plugin that displays an information alert banner above the navbar for logged-in users.
 
 ## Features
 
-- **Targeted Display**: Shows alert only to users in `unverified_users` or `grace_period_users` groups
-- **Smart Filtering**: Automatically hides from users in the `verified_students` group
+- **Default Visibility**: Shows alert to all logged-in users by default
+- **Group-Based Targeting**: Admin can configure which specific groups should see the alert
+- **Flexible Configuration**: Supports multiple groups via pipe-separated list
 - **Customizable Styling**: Admin-configurable colors, text, and appearance
 - **Dismissible**: Users can close the banner, and it stays hidden until next login
 - **Responsive Design**: Works on both desktop and mobile devices
@@ -25,24 +26,28 @@ The plugin adds the following settings to your Discourse admin panel under **Adm
 ### Settings
 
 - **Enable student verification alert banner**: Turn the plugin on/off
+- **Groups that should see the alert**: Specify which groups should see the banner (pipe-separated list, e.g., 'unverified_users|grace_period_users'). If left empty, shows to all logged-in users.
 - **Alert message text**: Customize the message shown to users (default: "Verify before you start posting as student")
 - **Background color**: Set the banner background color (default: #e6f0ff)
 - **Border color**: Set the banner border color (default: #b3d9ff)
 - **Text color**: Set the banner text color (default: #0066cc)
 - **Close button color**: Set the close button color (default: #0066cc)
 
-### Group Requirements
+### Group Configuration
 
-The plugin requires the following groups to be set up in your Discourse instance:
+The plugin is flexible in its group targeting:
 
-- `unverified_users`: Users who should see the alert
-- `grace_period_users`: Users in a grace period who should see the alert
-- `verified_students`: Verified users who should NOT see the alert
+- **Default Behavior**: Shows alert to all logged-in users if no groups are specified
+- **Group-Based Targeting**: Configure specific groups in the "Groups that should see the alert" setting
+- **Multiple Groups**: Use pipe-separated format (e.g., `unverified_users|grace_period_users|new_members`)
+- **Dynamic**: Groups can be added or removed without code changes
 
 ## How It Works
 
-1. **User Login**: When a user logs in, the plugin checks their group membership
-2. **Group Check**: If user is in `unverified_users` OR `grace_period_users` AND NOT in `verified_students`, show banner
+1. **User Login**: When a user logs in, the plugin checks if they should see the alert
+2. **Group Check**:
+   - If no groups are configured: Show to all logged-in users
+   - If groups are configured: Show only to users in the specified groups
 3. **Display**: Banner appears above the site header with customizable styling
 4. **Dismissal**: User can click the × button to dismiss the banner
 5. **Session Storage**: Dismissal state is stored until next login/session
@@ -87,8 +92,8 @@ The banner styling can be customized through the admin settings or by modifying 
 ### Message Content
 The alert message supports plain text. For HTML content, you would need to modify the widget code.
 
-### Group Names
-If you need different group names, modify the `shouldShowAlert` function in the initializer.
+### Group Configuration
+Configure which groups should see the alert through the admin settings. No code changes needed.
 
 ## Troubleshooting
 
@@ -110,6 +115,7 @@ If you need different group names, modify the `shouldShowAlert` function in the 
 
 ## Version History
 
+- **2.0.0**: Major update with configurable group targeting and default visibility to all users
 - **1.0.0**: Initial release with basic functionality
 
 ## License

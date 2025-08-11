@@ -10,23 +10,23 @@ This guide provides instructions for testing the plugin functionality.
 
 ## Setup for Testing
 
-### 1. Create Required Groups
+### 1. Create Test Groups (Optional)
 
-In your Discourse admin panel, create the following groups:
+The plugin works with any groups you configure. For testing purposes, you can create these example groups:
 
-1. **unverified_users**
+1. **unverified_users** (optional)
    - Go to Admin > Groups > New Group
    - Name: `unverified_users`
    - Add some test users to this group
 
-2. **grace_period_users**
+2. **grace_period_users** (optional)
    - Go to Admin > Groups > New Group
    - Name: `grace_period_users`
    - Add some test users to this group
 
-3. **verified_students**
+3. **regular_users** (optional)
    - Go to Admin > Groups > New Group
-   - Name: `verified_students`
+   - Name: `regular_users`
    - Add some test users to this group
 
 ### 2. Install the Plugin
@@ -40,55 +40,72 @@ In your Discourse admin panel, create the following groups:
 1. Go to Admin > Settings > Plugins
 2. Find "Student Verification Alert" settings
 3. Ensure "Enable student verification alert banner" is checked
-4. Customize other settings as needed:
+4. Configure "Groups that should see the alert" setting:
+   - Leave empty to show to all logged-in users
+   - Or specify groups like: `unverified_users|grace_period_users`
+5. Customize other settings as needed:
    - Message text
    - Colors (background, border, text, close button)
 
 ## Test Cases
 
-### Test Case 1: Banner Display for Unverified Users
+### Test Case 1: Default Behavior - Show to All Users
 
 **Steps:**
-1. Log in as a user who is in the `unverified_users` group
-2. Navigate to any page on the site
+1. Leave "Groups that should see the alert" setting empty
+2. Log in as any user (regardless of group membership)
+3. Navigate to any page on the site
 
 **Expected Result:**
-- Banner should appear above the site header
+- Banner should appear above the site header for all logged-in users
 - Banner should display the configured message
 - Banner should use the configured colors
 - Close button (×) should be visible
 
-### Test Case 2: Banner Display for Grace Period Users
+### Test Case 2: Group-Based Display - Single Group
 
 **Steps:**
-1. Log in as a user who is in the `grace_period_users` group
-2. Navigate to any page on the site
+1. Set "Groups that should see the alert" to: `unverified_users`
+2. Log in as a user who is in the `unverified_users` group
+3. Navigate to any page on the site
 
 **Expected Result:**
 - Banner should appear above the site header
-- Same behavior as Test Case 1
+- Same styling and functionality as Test Case 1
 
-### Test Case 3: No Banner for Verified Students
+### Test Case 3: Group-Based Display - Multiple Groups
 
 **Steps:**
-1. Log in as a user who is in the `verified_students` group
-2. Navigate to any page on the site
+1. Set "Groups that should see the alert" to: `unverified_users|grace_period_users`
+2. Log in as a user who is in either the `unverified_users` OR `grace_period_users` group
+3. Navigate to any page on the site
+
+**Expected Result:**
+- Banner should appear above the site header
+- Same styling and functionality as previous test cases
+
+### Test Case 4: No Banner for Users Not in Configured Groups
+
+**Steps:**
+1. Set "Groups that should see the alert" to: `unverified_users|grace_period_users`
+2. Log in as a user who is NOT in either of these groups
+3. Navigate to any page
 
 **Expected Result:**
 - No banner should appear
 - Site should function normally
 
-### Test Case 4: No Banner for Users in Both Groups
+### Test Case 5: Empty Group Configuration
 
 **Steps:**
-1. Add a user to both `unverified_users` AND `verified_students` groups
-2. Log in as that user
+1. Set "Groups that should see the alert" to an empty value or just spaces
+2. Log in as any user
 3. Navigate to any page
 
 **Expected Result:**
-- No banner should appear (verified_students takes precedence)
+- Banner should appear for all logged-in users (fallback to default behavior)
 
-### Test Case 5: Banner Dismissal
+### Test Case 6: Banner Dismissal
 
 **Steps:**
 1. Log in as a user who should see the banner
@@ -99,17 +116,17 @@ In your Discourse admin panel, create the following groups:
 - Banner should not reappear when navigating to other pages
 - Banner should not reappear when refreshing the page
 
-### Test Case 6: Banner Reappears After New Session
+### Test Case 7: Banner Reappears After New Session
 
 **Steps:**
-1. Complete Test Case 5 (dismiss the banner)
+1. Complete Test Case 6 (dismiss the banner)
 2. Log out completely
 3. Log back in as the same user
 
 **Expected Result:**
 - Banner should appear again (dismissal is per-session)
 
-### Test Case 7: Plugin Disabled
+### Test Case 8: Plugin Disabled
 
 **Steps:**
 1. Go to Admin > Settings > Plugins
@@ -119,7 +136,7 @@ In your Discourse admin panel, create the following groups:
 **Expected Result:**
 - No banner should appear for any user
 
-### Test Case 8: Custom Styling
+### Test Case 9: Custom Styling
 
 **Steps:**
 1. Go to Admin > Settings > Plugins
@@ -134,17 +151,17 @@ In your Discourse admin panel, create the following groups:
 - Banner should appear with the new colors
 - All color changes should be applied correctly
 
-### Test Case 9: Custom Message
+### Test Case 10: Custom Message
 
 **Steps:**
 1. Go to Admin > Settings > Plugins
-2. Change the message to: "Please complete your student verification process"
+2. Change the message to: "Please complete your verification process"
 3. Log in as a user who should see the banner
 
 **Expected Result:**
 - Banner should display the new message
 
-### Test Case 10: Mobile Responsiveness
+### Test Case 11: Mobile Responsiveness
 
 **Steps:**
 1. Log in as a user who should see the banner

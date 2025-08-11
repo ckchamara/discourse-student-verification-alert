@@ -1,7 +1,8 @@
 en:
   site_settings:
     student_verification_alert_enabled: "Enable student verification alert banner"
-    student_verification_alert_message: "Alert message text to display to unverified students"
+    student_verification_alert_visible_groups: "Groups that should see the alert banner (pipe-separated list, e.g., 'unverified_users|grace_period_users'). Banner is shown to all logged-in users by default, but only users in these groups will see it."
+    student_verification_alert_message: "Alert message text to display to users"
     student_verification_alert_background_color: "Background color for the alert banner (hex color)"
     student_verification_alert_border_color: "Border color for the alert banner (hex color)"
     student_verification_alert_text_color: "Text color for the alert banner (hex color)"

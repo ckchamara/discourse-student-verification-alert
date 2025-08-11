@@ -1,0 +1,19 @@
+plugins:
+  student_verification_alert_enabled:
+    default: true
+    client: true
+  student_verification_alert_message:
+    default: "Verify before you start posting as student"
+    client: true
+  student_verification_alert_background_color:
+    default: "#e6f0ff"
+    client: true
+  student_verification_alert_border_color:
+    default: "#b3d9ff"
+    client: true
+  student_verification_alert_text_color:
+    default: "#0066cc"
+    client: true
+  student_verification_alert_close_button_color:
+    default: "#0066cc"
+    client: true

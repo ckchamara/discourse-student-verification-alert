@@ -1,0 +1,89 @@
+/* Student Verification Alert Banner Styles */
+.student-verification-alert {
+  position: relative;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 0;
+  border: 1px solid;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  z-index: 1000;
+
+  /* Default colors - will be overridden by JavaScript with site settings */
+  background-color: #e6f0ff;
+  border-color: #b3d9ff;
+  color: #0066cc;
+
+  .alert-message {
+    flex: 1;
+    margin-right: 15px;
+    font-weight: 500;
+  }
+
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    
+    /* Default color - will be overridden by JavaScript */
+    color: #0066cc;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus {
+      outline: 2px solid rgba(0, 102, 204, 0.5);
+      outline-offset: 2px;
+    }
+  }
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+  .student-verification-alert {
+    padding: 10px 15px;
+    font-size: 13px;
+
+    .alert-message {
+      margin-right: 10px;
+    }
+
+    .close-button {
+      width: 20px;
+      height: 20px;
+      font-size: 16px;
+    }
+  }
+}
+
+/* Animation for smooth appearance */
+.student-verification-alert {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

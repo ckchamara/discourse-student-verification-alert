@@ -1,0 +1,8 @@
+en:
+  site_settings:
+    student_verification_alert_enabled: "Enable student verification alert banner"
+    student_verification_alert_message: "Alert message text to display to unverified students"
+    student_verification_alert_background_color: "Background color for the alert banner (hex color)"
+    student_verification_alert_border_color: "Border color for the alert banner (hex color)"
+    student_verification_alert_text_color: "Text color for the alert banner (hex color)"
+    student_verification_alert_close_button_color: "Close button color for the alert banner (hex color)"

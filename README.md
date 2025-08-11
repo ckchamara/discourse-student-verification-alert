@@ -63,20 +63,18 @@ discourse-student-verification-alert/
 │   └── locales/
 │       └── server.en.yml                       # English translations
 ├── assets/
-│   ├── javascripts/
-│   │   └── discourse/
-│   │       ├── initializers/
-│   │       │   └── student-verification-alert.js    # Main plugin logic
-│   │       └── widgets/
-│   │           └── student-verification-alert-banner.js  # Banner widget
-│   └── stylesheets/
-│       └── student-verification-alert.scss     # Banner styling
+│   └── javascripts/
+│       └── discourse/
+│           ├── initializers/
+│           │   └── student-verification-alert.js    # Main plugin logic
+│           └── components/
+│               └── student-verification-alert-banner.gjs  # Banner component
 └── README.md                                   # This file
 ```
 
 ### Plugin Outlets Used
 
-- `above-site-header`: Used to position the banner above the main Discourse header
+- `above-main-container`: Used to position the banner above the main content area
 
 ### Browser Compatibility
 
@@ -115,6 +113,7 @@ Configure which groups should see the alert through the admin settings. No code 
 
 ## Version History
 
+- **2.1.0**: Fixed compatibility with modern Discourse - converted from widgets to Glimmer components, updated plugin outlets
 - **2.0.0**: Major update with configurable group targeting and default visibility to all users
 - **1.0.0**: Initial release with basic functionality
 

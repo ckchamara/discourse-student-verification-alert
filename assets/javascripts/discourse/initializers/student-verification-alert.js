@@ -1,9 +1,10 @@
 import { apiInitializer } from "discourse/lib/api";
+import StudentVerificationAlertBanner from "../components/student-verification-alert-banner";
 
 /**
  * Student Verification Alert Plugin
  *
- * This plugin displays an alert banner above the site header for logged-in users.
+ * This plugin displays an alert banner above the main container for logged-in users.
  * By default, it shows to all logged-in users, but can be configured to show only
  * to users in specific groups. The banner can be dismissed and will remain hidden
  * until the next login.
@@ -33,10 +34,8 @@ export default apiInitializer((api) => {
     return;
   }
 
-  // Add the banner to the above-site-header outlet
-  api.decorateWidget("above-site-header", (helper) => {
-    return helper.attach("student-verification-alert-banner");
-  });
+  // Add the banner to the above-main-container outlet using modern API
+  api.renderInOutlet("above-main-container", StudentVerificationAlertBanner);
 });
 
 /**

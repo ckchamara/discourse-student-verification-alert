@@ -1,5 +1,39 @@
 # Changelog - Discourse Student Verification Alert Plugin
 
+## Version 2.1.0 - Compatibility Fix
+
+### 🔧 Bug Fixes
+
+**Widget Deprecation Fix:**
+- **Issue**: Plugin was using deprecated `above-site-header` widget which no longer exists in modern Discourse
+- **Solution**: Converted from widget-based approach to modern Glimmer component
+- **Changes**:
+  - Replaced `decorateWidget("above-site-header")` with `renderInOutlet("above-main-container")`
+  - Converted widget to `.gjs` Glimmer component with embedded styles
+  - Updated plugin outlet from `above-site-header` to `above-main-container`
+
+**Modern Component Architecture:**
+- Created `student-verification-alert-banner.gjs` Glimmer component
+- Removed deprecated widget file and separate SCSS file
+- Embedded styles directly in component for better encapsulation
+- Uses modern `@service`, `@action`, and template syntax
+
+**Technical Improvements:**
+- Updated to use `renderInOutlet` API (current standard)
+- Better component lifecycle management
+- Improved styling with scoped CSS
+- Enhanced accessibility with proper ARIA labels
+
+### 📁 File Changes
+
+- **Removed**: `assets/javascripts/discourse/widgets/student-verification-alert-banner.js`
+- **Removed**: `assets/stylesheets/student-verification-alert.scss`
+- **Added**: `assets/javascripts/discourse/components/student-verification-alert-banner.gjs`
+- **Updated**: `assets/javascripts/discourse/initializers/student-verification-alert.js`
+- **Updated**: `plugin.rb` (removed SCSS asset registration)
+
+---
+
 ## Version 2.0.0 - Major Update
 
 ### 🔄 Breaking Changes

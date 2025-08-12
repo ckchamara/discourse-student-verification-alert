@@ -102,7 +102,7 @@
 |---------|------|---------|-------------|
 | `student_verification_alert_enabled` | Boolean | `true` | Enable/disable the plugin |
 | `student_verification_alert_visible_groups` | List | `unverified_users\|grace_period_users` | Groups that should see the alert (pipe-separated) |
-| `student_verification_alert_message` | String | "Verify before you start posting as student" | Alert message text |
+| `student_verification_alert_message` | String | "Verify before you start posting as student, please click [verify icon] in the header." | Alert message text |
 | `student_verification_alert_background_color` | String | "#e6f0ff" | Banner background color |
 | `student_verification_alert_border_color` | String | "#b3d9ff" | Banner border color |
 | `student_verification_alert_text_color` | String | "#0066cc" | Banner text color |

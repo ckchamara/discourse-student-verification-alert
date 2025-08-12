@@ -17,8 +17,8 @@ export default class StudentVerificationAlertBanner extends Component {
    * Get the alert message from site settings
    */
   get message() {
-    return this.siteSettings.student_verification_alert_message || 
-           "Verify before you start posting as student";
+    return this.siteSettings.student_verification_alert_message ||
+           "Verify before you start posting as student, please click <img src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTggMUMxMS44NjYgMSAxNSA0LjEzNCAxNSA4QzE1IDExLjg2NiAxMS44NjYgMTUgOCAxNUM0LjEzNCAxNSAxIDExLjg2NiAxIDhDMSA0LjEzNCA0LjEzNCA1IDggMVoiIHN0cm9rZT0iIzAwNjZjYyIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+CjxwYXRoIGQ9Ik02IDhMNy41IDkuNUwxMCA2LjUiIHN0cm9rZT0iIzAwNjZjYyIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+' alt='verify' style='display: inline; width: 16px; height: 16px; margin: 0 4px; vertical-align: middle;'> in the header.";
   }
 
   /**
@@ -70,7 +70,7 @@ export default class StudentVerificationAlertBanner extends Component {
       style="background-color: {{this.bannerStyle.backgroundColor}}; border-color: {{this.bannerStyle.borderColor}}; color: {{this.bannerStyle.color}};"
     >
       <div class="alert-message">
-        {{this.message}}
+        {{{this.message}}}
       </div>
       <DButton
         @action={{this.dismissAlert}}

@@ -27,7 +27,7 @@ The plugin adds the following settings to your Discourse admin panel under **Adm
 
 - **Enable student verification alert banner**: Turn the plugin on/off
 - **Groups that should see the alert**: Specify which groups should see the banner (pipe-separated list, e.g., 'unverified_users|grace_period_users'). If left empty, shows to all logged-in users.
-- **Alert message text**: Customize the message shown to users (default: "Verify before you start posting as student")
+- **Alert message text**: Customize the message shown to users (default: "Verify before you start posting as student, please click [verify icon] in the header.")
 - **Background color**: Set the banner background color (default: #e6f0ff)
 - **Border color**: Set the banner border color (default: #b3d9ff)
 - **Text color**: Set the banner text color (default: #0066cc)

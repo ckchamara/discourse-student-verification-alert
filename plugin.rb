@@ -8,6 +8,9 @@
 # Enable the plugin based on the main setting
 enabled_site_setting :student_verification_alert_enabled
 
+# Register the SVG asset
+register_asset "images/unverified-label.svg"
+
 # After plugin initialization
 after_initialize do
   # Plugin initialization code can go here if needed for server-side functionality

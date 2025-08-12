@@ -7,7 +7,7 @@ plugins:
     type: list
     client: true
   student_verification_alert_message:
-    default: "Verify before you start posting as student, please click <img src='/plugins/discourse-student-verification-alert/images/unverified-label.svg' alt='verify' style='display: inline; height: 16px; margin: 0 4px; vertical-align: middle;'> in the header."
+    default: "Verify before you start posting as student, please click <img src=\"https://raw.githubusercontent.com/ckchamara/discourse-student-verification-alert/e661d288bbfaf100d1badb27303db85317d128ef/assets/images/unverified-label.svg\" alt=\"verify\" width=\"71\" height=\"29\"> in the header."
     client: true
   student_verification_alert_background_color:
     default: "#e6f0ff"
